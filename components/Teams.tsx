@@ -21,9 +21,7 @@ const Teams = () => {
     };
     getTeams();
     }, [contract]);
-
-    console.log('teams', teams)
-
+    
   return (
     <Flex gap="4">
         {teams.map((team: any) => (

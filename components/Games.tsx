@@ -21,8 +21,6 @@ const Games = () => {
     getGames();
     }, [contract]);
 
-    console.log('games', games)
-
   return (
     <Box>
         {games.length}
