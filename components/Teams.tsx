@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useContract, useProvider, useSigner } from 'wagmi';
 import TeamsContract from './Teams.json';
-import { Box, Button, FormControl, Input, Text } from '@chakra-ui/react';
+import { Box, Button, Flex, FormControl, Input, Text } from '@chakra-ui/react';
 
 
 const Teams = () => {
@@ -25,15 +25,13 @@ const Teams = () => {
     console.log('teams', teams)
 
   return (
-    <Box>
+    <Flex gap="4">
         {teams.map((team: any) => (
-            <Box key={team.teamId.toNumber()}>
-                <Text key={team.teamId.toNumber()} fontSize="lg" pb="2" fontWeight="bold">
-                    {team.name} ({team.teamId.toNumber()})
-                </Text>
-            </Box>
+            <Text key={team.teamId.toNumber()} fontSize="xs" pb="2">
+                {team.name} ({team.teamId.toNumber()})
+            </Text>
         ))}
-    </Box>
+    </Flex>
   );
 };
 
