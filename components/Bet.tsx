@@ -1,9 +1,8 @@
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { BigNumber } from 'ethers';
 import { useContract, useProvider, useSigner } from 'wagmi';
 import BetsContract from './Bets.json';
 import { Button, Flex } from '@chakra-ui/react';
-import Teams from './Teams';
 
 export const Bet = ({ betId }: { betId: BigNumber }) => {
     const provider = useProvider();
