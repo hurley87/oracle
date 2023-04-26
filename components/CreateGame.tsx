@@ -8,7 +8,7 @@ const CreateGame = () => {
     const {data: signer } = useSigner();
     const contract = useContract({
         // Add the address that was output from your deploy script
-        address: '0x2371eb2c11c27088A28b1aC8Ab1672CE059665B0',
+        address: '0x3454fc6ac7A7b830b232D3B2880237B50a26f92C',
         abi: GamesContract.abi,
         signerOrProvider: signer,
     });

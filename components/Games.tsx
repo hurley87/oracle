@@ -7,7 +7,7 @@ import Game from './Game';
 const Games = () => {
     const provider = useProvider();
     const contract = useContract({
-      address: '0x2371eb2c11c27088A28b1aC8Ab1672CE059665B0',
+      address: '0x3454fc6ac7A7b830b232D3B2880237B50a26f92C',
       abi: GamesContract.abi,
       signerOrProvider: provider,
     });

@@ -7,7 +7,7 @@ import { Bet } from './Bet';
 const Bets = ({ betId } : {  betId: number }) => {
     const provider = useProvider();
     const contract = useContract({
-      address: '0xF6F7080DE9004187193edA6bD978Aa77B4db60e9',
+      address: '0xab8336506FFE6ed005c711A114F376D6d6E18D03',
       abi: BetsContract.abi,
       signerOrProvider: provider,
     });

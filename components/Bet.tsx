@@ -9,12 +9,12 @@ export const Bet = ({ betId }: { betId: BigNumber }) => {
     const provider = useProvider();
     const { data: signer } = useSigner();
     const readContract = useContract({
-      address: '0xF6F7080DE9004187193edA6bD978Aa77B4db60e9',
+      address: '0xab8336506FFE6ed005c711A114F376D6d6E18D03',
       abi: BetsContract.abi,
       signerOrProvider: provider,
     });
     const signerContract = useContract({
-      address: '0xF6F7080DE9004187193edA6bD978Aa77B4db60e9',
+      address: '0xab8336506FFE6ed005c711A114F376D6d6E18D03',
       abi: BetsContract.abi,
       signerOrProvider: signer,
     });
