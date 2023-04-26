@@ -8,7 +8,7 @@ const CreateTeam = () => {
     const {data: signer } = useSigner();
     const contract = useContract({
         // Add the address that was output from your deploy script
-        address: '0xCBFd3a95c0784Dd30ee88d1de2Db292222EA33B9',
+        address: '0xb716a93D76C0DA3f02CC502ca22c507fE11bCcC5',
         abi: TeamsContract.abi,
         signerOrProvider: signer,
     });

@@ -7,7 +7,7 @@ import Game from './Game';
 const Games = () => {
     const provider = useProvider();
     const contract = useContract({
-      address: '0x3454fc6ac7A7b830b232D3B2880237B50a26f92C',
+      address: '0x3AacD852285a33A93806E86A68bAaA203b694EDe',
       abi: GamesContract.abi,
       signerOrProvider: provider,
     });
@@ -20,6 +20,8 @@ const Games = () => {
     };
     getGames();
     }, [contract]);
+
+    console.log(games)
 
   return (
     <Box>
