@@ -9,7 +9,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 const CreateGame = () => {
     const {data: signer } = useSigner();
     const contract = useContract({
-        // Add the address that was output from your deploy scrispt
+        // Add the address that was output from your deploy script
         address: '0x3AacD852285a33A93806E86A68bAaA203b694EDe',
         abi: GamesContract.abi,
         signerOrProvider: signer,
