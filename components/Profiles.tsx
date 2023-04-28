@@ -1,18 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useContract, useProvider } from 'wagmi';
 import ProfilesContract from './Profiles.json';
-import { Box, Link,
+import { Box,
     Table,
     Thead,
     Tbody,
-    Tfoot,
     Tr,
     Th,
     Td,
-    TableCaption,
     TableContainer
 } from '@chakra-ui/react';
-import Game from './Game';
 
 const Profiles = () => {
     const provider = useProvider();
@@ -30,8 +27,6 @@ const Profiles = () => {
     };
     getProfiles();
     }, [contract]);
-
-    console.log(profiles)
 
   return (
     <Box>
