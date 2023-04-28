@@ -4,10 +4,11 @@ import Teams from '../components/Teams';
 import CreateGame from '../components/CreateGame';
 import Games from '../components/Games';
 import Profiles from '../components/Profiles';
+import { Box } from '@chakra-ui/react';
 
 const Home: NextPage = () => {
   return (
-    <div><ConnectButton /><Teams /><CreateGame /><Games /><Profiles /></div>
+    <Box p='10'><br /><ConnectButton /><Teams /><br /><br /><CreateGame /><Games /><br /><br /><Profiles /></Box>
   );
 };
 
