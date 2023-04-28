@@ -8,7 +8,7 @@ import { Box } from '@chakra-ui/react';
 
 const Home: NextPage = () => {
   return (
-    <Box p='10'><br /><ConnectButton /><Teams /><br /><br /><CreateGame /><Games /><br /><br /><Profiles /></Box>
+    <Box px='20'><ConnectButton /><Teams /><br /><br /><CreateGame /><Games /><br /><br /><Profiles /></Box>
   );
 };
 
