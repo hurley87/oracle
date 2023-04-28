@@ -9,7 +9,7 @@ const Game = ({ gameId }: { gameId: number}) => {
     const provider = useProvider();
     const contract = useContract({
         // Add the address that was output from your deploy script
-        address: '0x3AacD852285a33A93806E86A68bAaA203b694EDe',
+        address: '0xadE9877B3fCC4EF1aEA48eE03662B1b0c822b552',
         abi: GamesContract.abi,
         signerOrProvider: provider,
     });

@@ -8,7 +8,7 @@ const Teams = () => {
     const provider = useProvider();
     const contract = useContract({
         // Add the address that was output from your deploy script
-        address: '0xb716a93D76C0DA3f02CC502ca22c507fE11bCcC5',
+        address: '0x44Fa31488779C90d88d4C31D7D1184Ea7cf8dA3b',
         abi: TeamsContract.abi,
         signerOrProvider: provider,
     });
