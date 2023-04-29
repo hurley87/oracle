@@ -26,32 +26,15 @@ export const Bet = ({ betId }: { betId: BigNumber }) => {
     const [bet, setBet] = useState<any>();
     const [isLoading, setIsLoading] = useState(false);
     const [showBet, setShowBet] = useState(true);
-    const [teamPickedId, setTeamPickedId] = useState<number>(0);
-    const [otherTeam, setOtherTeam] = useState<number>(0);
 
     useEffect(() => {
         const getBets = async () => {
           const bet = await readContract?.getBet(betId);
           console.log(bet)
+          const betsCreated = await readContract?.betsCreated()
+          console.log('betsCreated')
+          console.log(betsCreated?.toNumber())
           setBet(bet);
-          if(bet?.state === 1) {
-            const gameId = bet?.gameId?.toNumber();
-            console.log('gameId', gameId)
-            const game = await gameContract?.getGame(gameId);
-            const homeTeamId = game?.homeTeamId?.toNumber();
-            console.log('homeTeamId', homeTeamId)
-            const awayTeamId = game?.awayTeamId?.toNumber();
-            console.log('awayTeamId', awayTeamId)
-            const teamPickedId = parseInt(bet?.teamPickedId);
-            console.log('teamPickedId', teamPickedId)
-            setTeamPickedId(teamPickedId);
-            if(teamPickedId === homeTeamId) {
-              setOtherTeam(awayTeamId);
-            }
-            if(teamPickedId === awayTeamId) {
-              setOtherTeam(homeTeamId);
-            }
-          }
         };
         getBets();
     }, [readContract, betId, gameContract]);
@@ -66,21 +49,15 @@ export const Bet = ({ betId }: { betId: BigNumber }) => {
         setShowBet(false)
     }
 
-  if(bet?.state === 1) {
-    console.log("")
-    console.log("BET", bet)
-    console.log(parseInt(bet?.teamPickedId))
-    console.log(bet?.gameId?.toNumber())
-  }
-
+  console.log(bet)
 
 
   return (
     <div className={`flex space-x-2 text-sm`}>
         {bet?.state === 1 && showBet &&  (
             <Flex mb="4" gap="2">
-                <Button isLoading={isLoading} onClick={() => handleFinish(teamPickedId)}>{teamPickedId}</Button>
-                <Button isLoading={isLoading} onClick={() => handleFinish(otherTeam)}>{otherTeam}</Button>
+                <Button isLoading={isLoading} onClick={() => handleFinish(bet?.teamPickedId?.toNumber())}>{bet?.teamPickedId?.toNumber()}</Button>
+                <Button isLoading={isLoading} onClick={() => handleFinish(bet?.otherTeamPickedId?.toNumber())}>{bet?.otherTeamPickedId?.toNumber()}</Button>
             </Flex>
         )}
     </div>

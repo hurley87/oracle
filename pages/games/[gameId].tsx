@@ -15,6 +15,8 @@ const ViewGamePage: NextPage = () => {
     }
   }, [router.isReady, router.query]);
 
+  console.log(gameId)
+
   return <div><Teams />{!!gameId && (<><Game gameId={parseInt(gameId)} /> <br /> <Bets betId={parseInt(gameId)} /></>)}</div>;
 };
 

@@ -16,6 +16,7 @@ const Bets = ({ betId } : {  betId: number }) => {
     useEffect(() => {
         const getBets = async () => {
             const bets = await contract?.getGameBets(betId);
+            console.log(bets)
             setBets(bets);
         };
         getBets();
