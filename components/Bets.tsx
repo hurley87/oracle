@@ -7,7 +7,7 @@ import { Bet } from './Bet';
 const Bets = ({ betId } : {  betId: number }) => {
     const provider = useProvider();
     const contract = useContract({
-      address: '0xE392753b47575c3854397CC827Bc57d8Daa54EDD',
+      address: '0xA8561fb78d20e2E6FB9e2b0bCe7305189CF7E81b',
       abi: BetsContract.abi,
       signerOrProvider: provider,
     });
@@ -23,9 +23,8 @@ const Bets = ({ betId } : {  betId: number }) => {
 
   return (
     <Box>
-        {bets.length}
         {bets.map((bet: any) => (
-            <Bet key={bet?.toNumber()} betId={bet?.toNumber()} />
+          <Bet key={bet?.toNumber()} betId={bet?.toNumber()} />
         ))}
     </Box>
   );

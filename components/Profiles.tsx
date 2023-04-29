@@ -10,11 +10,22 @@ import { Box,
     Td,
     TableContainer
 } from '@chakra-ui/react';
+import { ethers } from 'ethers';
+
+const makeNum = (value: string) => {
+  if (value) {
+    const numStr = ethers.utils.formatUnits(value, 18);
+    return numStr.substring(0, numStr.indexOf('.') + 5); // keep only 2 decimals
+  } else {
+    return '0.0';
+  }
+};
+
 
 const Profiles = () => {
     const provider = useProvider();
     const contract = useContract({
-      address: '0x7C98F5fb1c227Af0db2F74cCb38e2e40f84F3E27',
+      address: '0xd8db4D9C1273E3eB18E43A84dE711E282cEe5AE5',
       abi: ProfilesContract.abi,
       signerOrProvider: provider,
     });
@@ -58,10 +69,10 @@ const Profiles = () => {
                      {profile.betCount.toNumber()}
                     </Td>
                     <Td>
-                     {profile.winnings.toNumber()}
+                     {makeNum(profile.winnings)}
                     </Td>
                     <Td>
-                     {profile.losses.toNumber()}
+                     {makeNum(profile.losses)}
                     </Td>
                 </Tr>
             ))}

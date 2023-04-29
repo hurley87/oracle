@@ -12,6 +12,7 @@ const Games = () => {
       signerOrProvider: provider,
     });
   const [games, setGames] = useState([]);
+  
 
   useEffect(() => {
     const getGames = async () => {
