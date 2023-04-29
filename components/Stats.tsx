@@ -17,7 +17,7 @@ const makeNum = (value: string) => {
 export const Stats = () => {
     const provider = useProvider();
     const readContract = useContract({
-      address: '0xA8561fb78d20e2E6FB9e2b0bCe7305189CF7E81b',
+      address: '0xC0d272Fe35E3E45852af12b454AA4AE7e8EE939F',
       abi: BetsContract.abi,
       signerOrProvider: provider,
     });

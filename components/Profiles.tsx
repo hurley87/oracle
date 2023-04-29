@@ -25,7 +25,7 @@ const makeNum = (value: string) => {
 const Profiles = () => {
     const provider = useProvider();
     const contract = useContract({
-      address: '0xd8db4D9C1273E3eB18E43A84dE711E282cEe5AE5',
+      address: '0xc3365e14880Be8dF0845EcFC09dB4c3f76cc04AA',
       abi: ProfilesContract.abi,
       signerOrProvider: provider,
     });
