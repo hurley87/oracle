@@ -7,7 +7,7 @@ const DistributeWinnings = () => {
     const {data: signer } = useSigner();
     const contract = useContract({
         // Add the address that was output from your deploy script
-        address: '0x235A3D46E15451219B911970BcCbA159e53e98bb',
+        address: '0xeCe8DBc0faA50b50bb38140667e219a17405735e',
         abi: DerbyContract.abi,
         signerOrProvider: signer,
     });
@@ -19,7 +19,7 @@ const DistributeWinnings = () => {
     try {
       setIsLoading(true); // disable login button to prevent multiple emails from being triggered
 
-        const tx = await contract?.distributeWinnings(horseId);
+        const tx = await contract?.withdrawFunds();
         await tx?.wait();
         console.log('tx', tx);
 
