@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { BigNumber, ethers } from 'ethers';
 import { useContract, useProvider, useSigner } from 'wagmi';
-import BetsContract from './Bets.json';
+import BetsContract from '../Bets.json';
 
 const makeNum = (value: string) => {
   if (value) {

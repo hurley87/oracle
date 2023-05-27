@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { useContract, useProvider } from 'wagmi';
-import GamesContract from './Games.json';
+import GamesContract from '../Games.json';
 import { Box, Link } from '@chakra-ui/react';
 import Game from './Game';
 
 const Games = () => {
-    const provider = useProvider();
-    const contract = useContract({
-      address: '0xadE9877B3fCC4EF1aEA48eE03662B1b0c822b552',
-      abi: GamesContract.abi,
-      signerOrProvider: provider,
-    });
+  const provider = useProvider();
+  const contract = useContract({
+    address: '0xccD635985c65538AE8255980C82Cd787FB6d655f',
+    abi: GamesContract.abi,
+    signerOrProvider: provider,
+  });
   const [games, setGames] = useState([]);
   
 
@@ -28,7 +28,7 @@ const Games = () => {
     <Box>
         {games.length}
         {games.map((game: any) => (
-            <Link href={`/games/${game.gameId.toNumber()}`} key={game.gameId.toNumber()}>
+            <Link href={`/nba/${game.gameId.toNumber()}`} key={game.gameId.toNumber()}>
                 <Game gameId={game.gameId.toNumber()} />
             </Link>
         ))}

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useContract, useProvider, useSigner } from 'wagmi';
-import TeamsContract from './Teams.json';
+import TeamsContract from '../Teams.json';
 import { Box, Button, Flex, FormControl, Input, Text } from '@chakra-ui/react';
 
 

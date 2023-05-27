@@ -1,9 +1,9 @@
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import type { NextPage } from 'next';
-import Teams from '../components/Teams';
-import CreateGame from '../components/CreateGame';
-import Games from '../components/Games';
-import Profiles from '../components/Profiles';
+import Teams from '../components/NHL/Teams';
+import CreateGame from '../components/NHL/CreateGame';
+import Games from '../components/NHL/Games';
+import Profiles from '../components/NHL/Profiles';
 import { Box } from '@chakra-ui/react';
 
 const Home: NextPage = () => {

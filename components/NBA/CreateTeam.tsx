@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useContract, useSigner } from 'wagmi';
-import TeamsContract from './Teams.json';
+import TeamsContract from '../Teams.json';
 import { Button, FormControl, Input, Text } from '@chakra-ui/react';
 
 
@@ -8,7 +8,7 @@ const CreateTeam = () => {
     const {data: signer } = useSigner();
     const contract = useContract({
         // Add the address that was output from your deploy script
-        address: '0x44Fa31488779C90d88d4C31D7D1184Ea7cf8dA3b',
+        address: '0x6B5520E52C395Cc19872914A33878d53069446DC',
         abi: TeamsContract.abi,
         signerOrProvider: signer,
     });

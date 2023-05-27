@@ -1,34 +1,26 @@
 import React, { useState } from 'react';
 import { useContract, useSigner } from 'wagmi';
-import GamesContract from './Games.json';
+import TeamsContract from '../Teams.json';
 import { Button, FormControl, Input, Text } from '@chakra-ui/react';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
 
 
-const CreateGame = () => {
+const CreateTeam = () => {
     const {data: signer } = useSigner();
     const contract = useContract({
         // Add the address that was output from your deploy script
-        address: '0xadE9877B3fCC4EF1aEA48eE03662B1b0c822b552',
-        abi: GamesContract.abi,
+        address: '0x44Fa31488779C90d88d4C31D7D1184Ea7cf8dA3b',
+        abi: TeamsContract.abi,
         signerOrProvider: signer,
     });
-  const [homeTeamId, setHomeTeamId] = useState(0);
-  const [awayTeamId, setAwayTeamId] = useState(1);
+  const [name, setName] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [selectedDate, setSelectedDate] = useState<any>(null);
 
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     try {
       setIsLoading(true); // disable login button to prevent multiple emails from being triggered
 
-        const startTime = Math.floor(selectedDate.getTime() / 1000);
-        const day = `${selectedDate.getMonth()}-${selectedDate.getDate()}-${selectedDate.getFullYear()}`
-
-
-        const tx = await contract?.createGame(homeTeamId, awayTeamId, startTime, day);
+        const tx = await contract?.createTeam(name);
         await tx?.wait();
         console.log('tx', tx);
 
@@ -40,38 +32,24 @@ const CreateGame = () => {
     }
 
   };
-
-  const handleDateChange = (date: any) => {
-    setSelectedDate(date);
-  };
-
   return (
     <form onSubmit={handleSubmit}>
       <Text fontSize="lg" pb="2" fontWeight="bold">
-        Create Game
+        Create team
       </Text>
       <FormControl id="role">
         <Input
-          type="number"
-          value={homeTeamId}
+          type="text"
+          placeholder="Toronto Maple Leafs"
+          value={name}
           border="1px solid #d9e1ec"
-          onChange={(e) => setHomeTeamId(parseInt(e.target.value))}
+          onChange={(e) => setName(e.target.value)}
         />
-      </FormControl>
-      <FormControl id="role">
-        <Input
-          type="number"
-          value={awayTeamId}
-          border="1px solid #d9e1ec"
-          onChange={(e) => setAwayTeamId(parseInt(e.target.value))}
-        />
-      </FormControl>
-      <FormControl color="black" id="role">
-        <DatePicker selected={selectedDate} onChange={handleDateChange} showTimeSelect />
       </FormControl>
 
       <FormControl id="role">
         <Button
+          isDisabled={name.length === 0}
           isLoading={isLoading}
           mt={2}
           colorScheme="green"
@@ -85,4 +63,4 @@ const CreateGame = () => {
   );
 };
 
-export default CreateGame;
+export default CreateTeam;

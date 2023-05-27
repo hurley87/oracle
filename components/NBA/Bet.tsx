@@ -1,25 +1,25 @@
 import { useEffect, useState } from 'react';
-import { BigNumber, ethers } from 'ethers';
+import { BigNumber } from 'ethers';
 import { useContract, useProvider, useSigner } from 'wagmi';
-import BetsContract from './Bets.json';
+import BetsContract from '../Bets.json';
 import { Button, Flex } from '@chakra-ui/react';
-import GamesContract from './Games.json';
+import GamesContract from '../Games.json';
 
 export const Bet = ({ betId }: { betId: BigNumber }) => {
     const provider = useProvider();
     const { data: signer } = useSigner();
     const readContract = useContract({
-      address: '0x9362dbBbfe513Ca553F627B2e57fE98122d22A73',
+      address: '0xa2fcdC4D3D8fE74710bBA89104Ac940DEef83101',
       abi: BetsContract.abi,
       signerOrProvider: provider,
     });
     const signerContract = useContract({
-      address: '0x9362dbBbfe513Ca553F627B2e57fE98122d22A73',
+      address: '0xa2fcdC4D3D8fE74710bBA89104Ac940DEef83101',
       abi: BetsContract.abi,
       signerOrProvider: signer,
     });
     const gameContract = useContract({
-      address: '0xadE9877B3fCC4EF1aEA48eE03662B1b0c822b552',
+      address: '0xccD635985c65538AE8255980C82Cd787FB6d655f',
       abi: GamesContract.abi,
       signerOrProvider: provider,
     });

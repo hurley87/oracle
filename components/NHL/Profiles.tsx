@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useContract, useProvider } from 'wagmi';
-import ProfilesContract from './Profiles.json';
+import ProfilesContract from '../Profiles.json';
 import { Box,
     Table,
     Thead,

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useContract, useProvider } from 'wagmi';
-import BetsContract from './Bets.json';
+import BetsContract from '../Bets.json';
 import { Box } from '@chakra-ui/react';
 import { Bet } from './Bet';
 

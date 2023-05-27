@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useContract, useProvider } from 'wagmi';
-import GamesContract from './Games.json';
+import GamesContract from '../Games.json';
 import { Text } from '@chakra-ui/react';
 import moment from 'moment';
 
@@ -9,7 +9,7 @@ const Game = ({ gameId }: { gameId: number}) => {
     const provider = useProvider();
     const contract = useContract({
         // Add the address that was output from your deploy script
-        address: '0xadE9877B3fCC4EF1aEA48eE03662B1b0c822b552',
+        address: '0xccD635985c65538AE8255980C82Cd787FB6d655f',
         abi: GamesContract.abi,
         signerOrProvider: provider,
     });

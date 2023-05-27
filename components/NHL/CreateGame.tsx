@@ -1,25 +1,33 @@
 import React, { useState } from 'react';
 import { useContract, useSigner } from 'wagmi';
-import DerbyContract from './Derby.json';
+import GamesContract from '../Games.json';
 import { Button, FormControl, Input, Text } from '@chakra-ui/react';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
-const DistributeWinnings = () => {
+
+const CreateGame = () => {
     const {data: signer } = useSigner();
     const contract = useContract({
-        // Add the address that was output from your deploy script
-        address: '0xeCe8DBc0faA50b50bb38140667e219a17405735e',
-        abi: DerbyContract.abi,
+        address: '0xadE9877B3fCC4EF1aEA48eE03662B1b0c822b552',
+        abi: GamesContract.abi,
         signerOrProvider: signer,
     });
-  const [horseId, setHomeTeamId] = useState(0);
+  const [homeTeamId, setHomeTeamId] = useState(0);
+  const [awayTeamId, setAwayTeamId] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
+  const [selectedDate, setSelectedDate] = useState<any>(null);
 
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     try {
       setIsLoading(true); // disable login button to prevent multiple emails from being triggered
 
-        const tx = await contract?.withdrawFunds();
+        const startTime = Math.floor(selectedDate.getTime() / 1000);
+        const day = `${selectedDate.getMonth()}-${selectedDate.getDate()}-${selectedDate.getFullYear()}`
+
+
+        const tx = await contract?.createGame(homeTeamId, awayTeamId, startTime, day);
         await tx?.wait();
         console.log('tx', tx);
 
@@ -27,22 +35,38 @@ const DistributeWinnings = () => {
       setIsLoading(false); // re-enable login button - user may have requested to edit their email
       console.log(error);
     } finally {
-      setIsLoading(false);
+        setIsLoading(false);
     }
+
+  };
+
+  const handleDateChange = (date: any) => {
+    setSelectedDate(date);
   };
 
   return (
     <form onSubmit={handleSubmit}>
       <Text fontSize="lg" pb="2" fontWeight="bold">
-        Distribute winnings for kentucky derby
+        Create Game
       </Text>
       <FormControl id="role">
         <Input
           type="number"
-          value={horseId}
+          value={homeTeamId}
           border="1px solid #d9e1ec"
           onChange={(e) => setHomeTeamId(parseInt(e.target.value))}
         />
+      </FormControl>
+      <FormControl id="role">
+        <Input
+          type="number"
+          value={awayTeamId}
+          border="1px solid #d9e1ec"
+          onChange={(e) => setAwayTeamId(parseInt(e.target.value))}
+        />
+      </FormControl>
+      <FormControl color="black" id="role">
+        <DatePicker selected={selectedDate} onChange={handleDateChange} showTimeSelect />
       </FormControl>
 
       <FormControl id="role">
@@ -53,11 +77,11 @@ const DistributeWinnings = () => {
           w="full"
           type="submit"
         >
-          Distribute Winnings
+          Create
         </Button>
       </FormControl>
     </form>
   );
 };
 
-export default DistributeWinnings;
+export default CreateGame;
